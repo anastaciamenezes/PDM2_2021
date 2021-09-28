@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:vidente_app/controller/cidade_controller.dart';
+import 'package:vidente_app/controllers/cidade_controller.dart';
 import 'package:vidente_app/models/cidade.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
@@ -43,7 +43,7 @@ class CidadeService {
     });
 
     /**
-     * Realiza a ordenação das cidades em ordem alfabética, através da comparação
+     * Realiza a ordenação das cidades em ordem alfabética
      */
     cidadesCarregadas.sort((a, b) => a.nome.compareTo(b.nome));
 

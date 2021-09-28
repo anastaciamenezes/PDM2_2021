@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:vidente_app/controller/cidade_controller.dart';
+import 'package:vidente_app/controllers/cidade_controller.dart';
 import 'package:vidente_app/models/cidade.dart';
 import 'package:vidente_app/models/previsao_hora.dart';
-import 'package:vidente_app/services/cidade_service.dart';
+//import 'package:vidente_app/services/cidade_service.dart';
 import 'package:vidente_app/services/previsao_service.dart';
 import 'package:vidente_app/widgets/configuracoes.dart';
 import 'package:vidente_app/widgets/proximas_temperaturas.dart';
@@ -17,18 +17,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Future<List<PrevisaoHora>> ultimasPrevisoes;
-  List<Cidade> cidades;
+  Future<List<Cidade>> cidades;
 
   @override
   void initState() {
     super.initState();
     carregarPrevisoes();
-    carregarCidades();
+    //carregarCidades();
   }
-   void carregarCidades() async {
+  /** void carregarCidades() async {
     CidadeService service = CidadeService();
     cidades = await service.recuperarCidades();
-  }
+  }*/
 
   void carregarPrevisoes() {
     PrevisaoService service = PrevisaoService();
@@ -39,9 +39,9 @@ class _HomeState extends State<Home> {
     setState(() => carregarPrevisoes());
   }
 
-  FutureOr<dynamic> carregarPrevisoesSelecionada(dynamic valor) async {
+  /**FutureOr<dynamic> carregarPrevisoesSelecionada(dynamic valor) async {
     setState(() => carregarPrevisoes());
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +53,9 @@ class _HomeState extends State<Home> {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(
-                      builder: (context) => Configuracoes(
-                            cidades: this.cidades,
-                          )))
-                  .then(carregarPrevisoesSelecionada);
+                      builder: (context) => Configuracoes()
+                      ),
+                  );
             },
             child: Icon(
               Icons.settings, // add custom icons also

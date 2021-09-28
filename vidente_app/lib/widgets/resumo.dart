@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vidente_app/controller/tema_controller.dart';
+import 'package:vidente_app/controllers/tema_controller.dart';
 
 class Resumo extends StatelessWidget {
   final String cidade;
